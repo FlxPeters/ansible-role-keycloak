@@ -1,0 +1,23 @@
+---
+- name: Create keycloak group
+  group:
+    name: "{{ keycloak_group }}"
+    state: present
+
+- name: Create keycloak user
+  user:
+    name: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    comment: "User to run keycloak"
+
+- name: Ensure keycloak directories
+  file:
+    dest: "{{ item }}"
+    mode: 0755
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    state: directory
+  with_items:
+    - "{{ keycloak_shared_dir }}"
+    - "{{ keycloak_log_dir }}"
+    - "{{ keycloak_shared_dir }}/standalone/data"

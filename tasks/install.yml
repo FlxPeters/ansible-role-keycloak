@@ -1,0 +1,36 @@
+---
+- name: Unarchive Keycloak distribution tarball
+  unarchive:
+    src: "{{ keycloak_url }}"
+    dest: "{{ keycloak_dir }}"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    remote_src: true
+    creates: "{{ keycloak_install_dir }}"
+
+- name: Ensure shared directories are absent
+  file:
+    path: "{{ keycloak_install_dir }}/{{item}}"
+    state: absent
+  with_items:
+    - "standalone/data"
+    - "standalone/log"
+
+- name: Symlink shared directories
+  file:
+    src: "{{ keycloak_shared_dir }}/{{item}}"
+    dest: "{{ keycloak_install_dir }}/{{item}}"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    state: link
+  with_items:
+    - "standalone/data"
+    - "standalone/log"
+
+- name: Symlink Keycloak distribution to current link
+  file:
+    src: "{{ keycloak_install_dir }}"
+    dest: "{{ keycloak_current_link }}"
+    owner: "{{ keycloak_user }}"
+    group: "{{ keycloak_group }}"
+    state: link
