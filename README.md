@@ -33,6 +33,3 @@ Author Information
 ------------------
 
 This role was created in 2018 by [Felix Peters](https://www.felixpeters.de/).
-=======
-# ansible-role-keycloak
-Ansible role for Keycloak (https://www.keycloak.org/)
