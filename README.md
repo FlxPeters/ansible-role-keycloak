@@ -1,5 +1,3 @@
-Ansible Role: Keycloak
-=========
 
 An Ansible Role that installs Keycloak on RedHat/CentOS or Debian/Ubuntu.
 
@@ -35,3 +33,6 @@ Author Information
 ------------------
 
 This role was created in 2018 by [Felix Peters](https://www.felixpeters.de/).
+=======
+# ansible-role-keycloak
+Ansible role for Keycloak (https://www.keycloak.org/)
