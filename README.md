@@ -1,6 +1,8 @@
 
 An Ansible Role that installs Keycloak on RedHat/CentOS or Debian/Ubuntu.
 
+[![Build Status](https://travis-ci.org/FlxPeters/ansible-role-keycloak.svg?branch=master)](https://travis-ci.org/FlxPeters/ansible-role-keycloak)
+
 Requirements
 ------------
 
@@ -9,7 +11,7 @@ Requires at least Java 8. The role does NOT install Java.
 Todo
 ----
 - [ ] Keycloak configuration and JDBC support
-- [ ] Tests with Tetinfra
+- [x] Tests with Tetinfra
 - [ ] Tests with multiple plattforms
 - [ ] Standalone-HA mode
 - [ ] Domain mode

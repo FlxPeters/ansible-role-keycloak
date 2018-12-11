@@ -7,7 +7,7 @@
   register: keycloak_dir_stat
 
 - import_tasks: install.yml
-  when: keycloak_dir_stat.stat.exists == false
+  when: not keycloak_dir_stat.stat.exists
 
 - import_tasks: service.yml
-  when: keycloak_create_service == true
+  when: keycloak_create_service
