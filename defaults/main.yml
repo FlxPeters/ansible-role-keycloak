@@ -4,9 +4,10 @@ keycloak_user: keycloak
 keycloak_group: keycloak
 
 # distro
-keycloak_version: 4.6.0.Final
-keycloak_archive: keycloak-{{ keycloak_version }}.tar.gz
-keycloak_url: http://downloads.jboss.org/keycloak/{{ keycloak_version }}/{{keycloak_archive }}
+keycloak_version: 4.7.0.Final
+keycloak_archive: "keycloak-{{ keycloak_version }}.tar.gz"
+keycloak_dist_url: "https://downloads.jboss.org/keycloak/{{ keycloak_version }}/{{keycloak_archive }}"
+
 
 # directories
 keycloak_dir: /opt/keycloak

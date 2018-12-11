@@ -1,12 +1,19 @@
 ---
+- name: Keycloak installation base directroy
+  debug:
+    var: "keycloak_dir"
+
+- name: Keycloak distribution url
+  debug:
+    var: "keycloak_dist_url"
+
 - name: Unarchive Keycloak distribution tarball
   unarchive:
-    src: "{{ keycloak_url }}"
+    src: "{{ keycloak_dist_url }}"
     dest: "{{ keycloak_dir }}"
+    remote_src: true
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
-    remote_src: true
-    creates: "{{ keycloak_install_dir }}"
 
 - name: Ensure shared directories are absent
   file:

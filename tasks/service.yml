@@ -1,20 +1,15 @@
 ---
-- name: Copy systemd file in place
-  template:
-    src: systemd/keycloak.service
-    dest: /etc/systemd/system/
-  notify: restart keycloak
-
-- name: Force systemd to reread configs
-  systemd: daemon_reload=yes
-
 - name: Ensure pid file directory exists
   file:
     path: /var/run/keycloak/
     state: directory
 
-- name: Ensure keycloak service is enabled
-  service:
-    name: keycloak
-    enabled: true
-    state: restarted
+- name: Copy systemd file in place
+  template:
+    src: systemd/keycloak.service
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+    mode: 0644
+  when: "ansible_service_mgr == 'systemd'"
+  notify: restart keycloak

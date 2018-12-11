@@ -3,3 +3,4 @@
   service:
     name: keycloak
     state: restarted
+    enabled: true
