@@ -17,7 +17,7 @@
 
 - name: Ensure shared directories are absent
   file:
-    path: "{{ keycloak_install_dir }}/{{item}}"
+    path: "{{ keycloak_install_dir }}/{{ item }}"
     state: absent
   with_items:
     - "standalone/data"
@@ -25,8 +25,8 @@
 
 - name: Symlink shared directories
   file:
-    src: "{{ keycloak_shared_dir }}/{{item}}"
-    dest: "{{ keycloak_install_dir }}/{{item}}"
+    src: "{{ keycloak_shared_dir }}/{{ item }}"
+    dest: "{{ keycloak_install_dir }}/{{ item }}"
     owner: "{{ keycloak_user }}"
     group: "{{ keycloak_group }}"
     state: link
